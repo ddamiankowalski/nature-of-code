@@ -1,13 +1,19 @@
-import { natureAnimation } from "../../canvas/setup";
+export class Walker {
+  constructor(x, y, context) {
+    this.x = x;
+    this.y = y;
+    this.context = context;
+  }
 
-const canvas = document.getElementById('walker-canvas');
+  draw() {
+    this.context.save();
+    this.context.fillStyle = 'black';
+    this.context.fillRect(this.x, this.y, 1, 1);
+    this.context.restore();
+  }
 
-natureAnimation(500, 500, canvas, setup, draw);
-
-function setup() {
-  console.log('set ups')
-}
-
-function draw(time, context) {
-  console.log('draws!', time, context)
+  randMove() {
+    this.x += Math.floor(Math.random() * 3) - 1
+    this.y += Math.floor(Math.random() * 3) - 1;
+  }
 }

@@ -6,9 +6,9 @@
  */
 export const natureAnimation = function (width, height, canvasElement, initCallback, drawCallback) {
   const context = canvasElement.getContext('2d');
-  context.width = width;
-  context.height = height;
-  
+  canvasElement.width = width;
+  canvasElement.height = height;
+
   canvasElement.style.width = width + 'px';
   canvasElement.style.height = height + 'px';
 
@@ -17,9 +17,14 @@ export const natureAnimation = function (width, height, canvasElement, initCallb
   canvasElement.style.left = '50%';
   canvasElement.style.transform = 'translate(-50%, -50%)'
 
-  initCallback();
+  const config = {
+    refresh: false
+  }
+
+  initCallback(context, config);
 
   const drawWrapper = (time) => {
+    config.refresh && context.clearRect(0, 0, width, height);
     drawCallback(time, context);
     requestAnimationFrame(drawWrapper);
   }
