@@ -18,7 +18,7 @@ export const natureAnimation = function (width, height, canvasElement, initCallb
   canvasElement.style.transform = 'translate(-50%, -50%)'
 
   const config = {
-    refresh: false
+    refresh: true
   }
 
   initCallback(context, config);

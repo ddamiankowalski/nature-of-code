@@ -6,7 +6,6 @@ const canvas = document.getElementById('walker-canvas');
 natureAnimation(500, 500, canvas, setup, draw);
 
 function setup(context, config) {
-  config.refresh = false;
   walker = new Walker(250, 250, context);
 }
 
