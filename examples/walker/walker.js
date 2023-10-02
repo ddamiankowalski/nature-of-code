@@ -7,13 +7,14 @@ export class Walker {
 
   draw() {
     this.context.save();
-    this.context.fillStyle = 'black';
-    this.context.fillRect(this.x, this.y, 1, 1);
+    this.context.strokeStyle = 'black';
+    this.context.lineTo(this.x, this.y, 1, 1);
+    this.context.stroke();
     this.context.restore();
   }
 
   randMove() {
-    this.x += Math.floor(Math.random() * 3) - 1
-    this.y += Math.floor(Math.random() * 3) - 1;
+    this.x += (Math.random() - .5) * 15;
+    this.y += (Math.random() - .5) * 15;
   }
 }
