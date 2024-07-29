@@ -1,4 +1,8 @@
-const items = [{ name: 'Random Walker', module: './algorithms/walker.js' }, { name: 'Random Number Distribution', module: './algorithms/rand-distribution.js' }]
+const items = [
+  { name: 'Random Walker', module: './algorithms/walker.js' },
+  { name: 'Random Mouse Walker', module: './algorithms/mouse-walker.js' },
+  { name: 'Random Number Distribution', module: './algorithms/rand-distribution.js' }
+]
 
 function buildMenu(items) {
   const menu = document.getElementById('menu');
