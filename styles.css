@@ -8,16 +8,18 @@ html, body {
   font-family: "Cutive", serif;
   font-weight: 400;
   font-style: normal;
-  color: #1C2826;
+  color: #FFFFFF;
   background-color: #000000;
   font-size: 16px;
 }
 
 #app-noc {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 50%;
   height: 50%;
   transform: translate(-50%, -50%);
 }
@@ -30,9 +32,10 @@ html, body {
   color: #FFFFFF;
   font-size: 1rem;
   line-height: 0.75rem;
+  text-wrap: nowrap;
 }
 
-.noc-header--subheader {
+.noc-subheader {
   color: #EFD81D;
   font-size: 0.75rem;
 }
@@ -41,7 +44,57 @@ html, body {
   display: block;
   height: 2rem;
   width: 2rem;
-  margin: 1.75rem;
+  border-radius: 0.25rem;
+  margin: 1.25rem;
   background-repeat: no-repeat;
   background-image: url(javascript.svg);
+}
+
+.noc-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  align-items: center;
+  margin-top: 3.5rem;
+}
+
+.noc-menu-item {
+  font-size: 0.8125rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: opacity .3s ease;
+  opacity: 0.25;
+}
+
+.noc-menu-item-wrapper {
+  position: relative;
+  display: flex;
+  gap: 1rem;
+}
+
+.noc-menu-item-num {
+  position: absolute;
+  left: -2rem;
+  font-size: 0.8125rem;
+}
+
+.noc-menu-item-wrapper:hover .noc-menu-item-num {
+  color: #EFD81D;
+}
+
+.noc-menu-item-wrapper:hover .noc-menu-item {
+  opacity: 1;
+}
+
+.noc-showcase {
+  font-size: 0.8125rem;
+  color: #FFFFFF;
+  cursor: pointer;
+  transition: opacity .3s ease;
+  opacity: 0.25;
+}
+
+.noc-showcase:hover {
+  opacity: 1;
 }
