@@ -23,8 +23,8 @@ function buildMenu(items) {
       const { default: func } = await import(/* @vite-ignore */item.module)
       Array.from(menu.children).forEach(node => node.remove());
       
-      buildShowcase();
-      func();
+      const canvas = buildShowcase();
+      func(canvas);
     })
   })
 }
@@ -44,9 +44,11 @@ function buildShowcase() {
     canvas.style.width = '0px';
   })
 
-  canvas.style.height = '200px';
-  canvas.style.width = '200px';
+  canvas.style.height = '300px';
+  canvas.style.width = '300px';
   showcase.appendChild(goBackEl);
+
+  return canvas;
 }
 
 buildMenu(items);
