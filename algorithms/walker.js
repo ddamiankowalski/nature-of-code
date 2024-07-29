@@ -3,10 +3,17 @@ import { render } from '../canvas/render.js';
 export default function draw(canvas) { 
   const walker = new Walker(canvas.width / 2, canvas.height / 2, canvas);
 
-  render(() => {
+  const { start, stop } = render(() => {
     walker.walk();
     walker.render();
-  })();
+  });
+
+  start();
+
+  return () => {
+    walker.clear();
+    stop();
+  };
 }
 
 class Walker {
@@ -27,6 +34,10 @@ class Walker {
   render() {
     this.ctx.lineTo(this.x, this.y);
     this.ctx.stroke();
+  }
+
+  clear() {
+    this.ctx.clearRect(0, 0, 300, 300);
   }
 
   #getRand() {

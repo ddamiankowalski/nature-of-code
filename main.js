@@ -22,14 +22,12 @@ function buildMenu(items) {
     wrapperEl.addEventListener('click', async () => {
       const { default: func } = await import(/* @vite-ignore */item.module)
       Array.from(menu.children).forEach(node => node.remove());
-      
-      const canvas = buildShowcase();
-      func(canvas);
+      buildShowcase(func);
     })
   })
 }
 
-function buildShowcase() {
+function buildShowcase(cbFunc) {
   const showcase = document.getElementById('showcase');
   const canvas = document.getElementById('showcase-canvas');
   const goBackEl = document.createElement('div');
@@ -37,18 +35,19 @@ function buildShowcase() {
   goBackEl.innerHTML = 'Go back';
   goBackEl.classList.add('noc-showcase-back')
 
-  goBackEl.addEventListener('click', () => {
-    buildMenu(items)
-    goBackEl.remove();
-    canvas.style.height = '0px';
-    canvas.style.width = '0px';
-  })
-
   canvas.style.height = '300px';
   canvas.style.width = '300px';
   showcase.appendChild(goBackEl);
 
-  return canvas;
+  const stop = cbFunc(canvas);
+
+  goBackEl.addEventListener('click', () => {
+    buildMenu(items)
+    stop();
+    goBackEl.remove();
+    canvas.style.height = '0px';
+    canvas.style.width = '0px';
+  })
 }
 
 buildMenu(items);

@@ -5,10 +5,18 @@
  * @returns 
  */
 export const render = (renderFn) => {
-  const startRender = () => {
+  let isStopped = false;
+
+  const start = () => {
+    if (isStopped) {
+      return;
+    }
+
     renderFn();
-    requestAnimationFrame(startRender);
+    requestAnimationFrame(start);
   }
 
-  return startRender;
+  const stop = () => (isStopped = true);
+
+  return { start, stop };
 }
