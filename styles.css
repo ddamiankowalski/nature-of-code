@@ -11,6 +11,7 @@ html, body {
   color: #FFFFFF;
   background-color: #000000;
   font-size: 16px;
+  user-select: none;
 }
 
 #app-noc {
@@ -88,13 +89,27 @@ html, body {
 }
 
 .noc-showcase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
   font-size: 0.8125rem;
   color: #FFFFFF;
-  cursor: pointer;
-  transition: opacity .3s ease;
-  opacity: 0.25;
 }
 
-.noc-showcase:hover {
-  opacity: 1;
+.noc-showcase-back {
+  transition: opacity .3s ease;
+  opacity: 0.25;
+  cursor: pointer;
+}
+
+.noc-showcase-back:hover {
+    opacity: 1;
+
+}
+
+.noc-showcase-canvas {
+  background-color: #FFFFFF;
+  width: 0;
+  height: 0;
 }

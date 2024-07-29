@@ -31,15 +31,21 @@ function buildMenu(items) {
 
 function buildShowcase() {
   const showcase = document.getElementById('showcase');
+  const canvas = document.getElementById('showcase-canvas');
   const goBackEl = document.createElement('div');
   
   goBackEl.innerHTML = 'Go back';
+  goBackEl.classList.add('noc-showcase-back')
 
   goBackEl.addEventListener('click', () => {
     buildMenu(items)
-    Array.from(showcase.children).forEach(node => node.remove());
+    goBackEl.remove();
+    canvas.style.height = '0px';
+    canvas.style.width = '0px';
   })
 
+  canvas.style.height = '200px';
+  canvas.style.width = '200px';
   showcase.appendChild(goBackEl);
 }
 
