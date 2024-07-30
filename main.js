@@ -3,7 +3,8 @@ const items = [
   { name: 'Random Mouse Walker', module: './algorithms/mouse-walker.js' },
   { name: 'Random Number Distribution', module: './algorithms/rand-distribution.js' },
   { name: 'Normal Distribution', module: './algorithms/gauss-distribution.js' },
-  { name: 'Gauss Walker', module: './algorithms/gauss-walker.js' }
+  { name: 'Gauss Walker', module: './algorithms/gauss-walker.js' },
+  { name: 'Lévy Flight', module: './algorithms/levy-walker.js' },
 ]
 
 function buildMenu(items) {
