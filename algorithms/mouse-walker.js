@@ -48,6 +48,7 @@ class MouseWalker {
   }
 
   render() {
+    this.ctx.globalAlpha = 1;
     this.ctx.lineTo(this.x, this.y);
     this.ctx.stroke();
   }

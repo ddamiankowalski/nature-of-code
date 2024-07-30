@@ -17,12 +17,9 @@ export default function draw(canvas) {
 }
 
 class GaussDistribution {
-  currentValue = null;
-  layer = 0;
-  layerRefCount = 0;
-
   constructor(canvas) {
-    this.size = 30;
+    this.size = 100;
+    this.normalArray = new Array(100).fill(0);
 
     this.ctx = canvas.getContext('2d');
     this.ctx.beginPath();
@@ -43,19 +40,27 @@ class GaussDistribution {
     }
 
     this.currentValue = marsagliaPolar();
-    this.layerRefCount++;
-
-    if (this.layerRefCount > 10) {
-      this.layerRefCount = 0;
-      this.layer++;
-
+    if (this.currentValue < 4 && this.currentValue > -4) {
+      const index = Math.floor((this.currentValue + 4) / 8 * 99);
+      this.normalArray[index]++;
     }
   }
 
   render() {
+    this.ctx.clearRect(0, 0, 300, 280);
+    this.ctx.fillStyle = 'black';
+    this.ctx.globalAlpha = 1;
+    const colWidth = 300 / this.size;
+    
+    this.normalArray.forEach((num, index) => {
+      const value = num / Math.max(...this.normalArray) * 200;
+      this.ctx.fillRect(index * colWidth, 280, colWidth - 1, -value);
+    })
+
     this.ctx.fillStyle = 'red';
+    this.ctx.globalAlpha = 0.1;
     const result = (this.currentValue + 4) * 300 / 8;
-    this.ctx.fillRect(result, 300 - this.layer, 2, 2);
+    this.ctx.fillRect(result, 280, 2, 20);
   }
 
   clear() {

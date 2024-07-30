@@ -32,6 +32,7 @@ class RandDistribution {
   }
 
   render() {
+    this.ctx.globalAlpha = 1;
     this.ctx.clearRect(0, 0, 300, 300);
     this.ctx.fillStyle = 'grey';
     const colWidth = 300 / this.size;
