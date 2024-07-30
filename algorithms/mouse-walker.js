@@ -33,7 +33,7 @@ class MouseWalker {
   }
 
   walk() {
-    const isMouseWalk = Math.random() >= 0.5;
+    const isMouseWalk = Math.random() >= 0.75;
     if (isMouseWalk) {
       const xDist = this.#mouseX -this.x;
       const yDist = this.#mouseY - this.y;
