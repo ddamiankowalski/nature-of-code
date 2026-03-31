@@ -12,6 +12,6 @@
     "vite": "^4.4.5"
   },
   "dependencies": {
-    "@javascripthub/canvas-helper": "^1.0.3"
+    "@javascripthub/canvas-helper": "^1.0.4"
   }
 }

@@ -39,24 +39,22 @@ function buildMenu(items) {
 
 function buildShowcase(cbFunc) {
   const showcase = document.getElementById("showcase");
-  const canvas = document.getElementById("showcase-canvas");
+  const wrapper = document.getElementById("showcase-wrapper");
   const goBackEl = document.createElement("div");
 
   goBackEl.innerHTML = "Go back";
   goBackEl.classList.add("noc-showcase-back");
 
-  canvas.style.height = "300px";
-  canvas.style.width = "300px";
   showcase.appendChild(goBackEl);
 
-  const stop = cbFunc(canvas);
+  const stop = cbFunc(wrapper);
 
   goBackEl.addEventListener("click", () => {
     buildMenu(items);
     stop();
     goBackEl.remove();
-    canvas.style.height = "0px";
-    canvas.style.width = "0px";
+    wrapper.style.height = "0px";
+    wrapper.style.width = "0px";
   });
 }
 

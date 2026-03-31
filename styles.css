@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Cutive&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Cutive&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap");
 
-html, body {
+html,
+body {
   width: 100%;
   height: 100%;
   padding: 0;
@@ -8,7 +9,7 @@ html, body {
   font-family: "Cutive", serif;
   font-weight: 400;
   font-style: normal;
-  color: #FFFFFF;
+  color: #ffffff;
   background-color: #000000;
   font-size: 16px;
   user-select: none;
@@ -30,14 +31,14 @@ html, body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #FFFFFF;
+  color: #ffffff;
   font-size: 1rem;
   line-height: 0.75rem;
   text-wrap: nowrap;
 }
 
 .noc-subheader {
-  color: #EFD81D;
+  color: #efd81d;
   font-size: 0.75rem;
 }
 
@@ -62,9 +63,9 @@ html, body {
 
 .noc-menu-item {
   font-size: 0.8125rem;
-  color: #FFFFFF;
+  color: #ffffff;
   cursor: pointer;
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
   opacity: 0.25;
 }
 
@@ -81,7 +82,7 @@ html, body {
 }
 
 .noc-menu-item-wrapper:hover .noc-menu-item-num {
-  color: #EFD81D;
+  color: #efd81d;
 }
 
 .noc-menu-item-wrapper:hover .noc-menu-item {
@@ -94,22 +95,22 @@ html, body {
   align-items: center;
   gap: 2rem;
   font-size: 0.8125rem;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .noc-showcase-back {
-  transition: opacity .3s ease;
+  transition: opacity 0.3s ease;
   opacity: 0.25;
   cursor: pointer;
 }
 
 .noc-showcase-back:hover {
-    opacity: 1;
-
+  opacity: 1;
 }
 
-.noc-showcase-canvas {
-  background-color: #FFFFFF;
+.noc-showcase-wrapper {
+  background-color: #ffffff;
   width: 0;
   height: 0;
+  display: block;
 }
