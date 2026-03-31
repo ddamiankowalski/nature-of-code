@@ -45,7 +45,7 @@ function showcase(example) {
   const wrapper = document.getElementById("showcase-wrapper");
   const goBackEl = document.createElement("div");
 
-  const helper = createHelper(wrapper, {});
+  example(wrapper);
 
   wrapper.style.height = "300px";
   wrapper.style.width = "300px";
@@ -57,7 +57,6 @@ function showcase(example) {
 
   goBackEl.addEventListener("click", () => {
     buildMenu(items);
-    helper.destroy();
 
     goBackEl.remove();
     wrapper.style.height = "0px";
