@@ -1,3 +1,5 @@
+import { createHelper } from "@javascripthub/canvas-helper";
+
 const items = [
   { name: "Random Walker", module: "./algorithms/walker.js" },
   { name: "Random Mouse Walker", module: "./algorithms/mouse-walker.js" },
@@ -30,28 +32,33 @@ function buildMenu(items) {
     menu.appendChild(wrapperEl);
 
     wrapperEl.addEventListener("click", async () => {
-      const { default: func } = await import(/* @vite-ignore */ item.module);
+      const { default: example } = await import(/* @vite-ignore */ item.module);
       Array.from(menu.children).forEach((node) => node.remove());
-      buildShowcase(func);
+
+      showcase(example);
     });
   });
 }
 
-function buildShowcase(cbFunc) {
+function showcase(example) {
   const showcase = document.getElementById("showcase");
   const wrapper = document.getElementById("showcase-wrapper");
   const goBackEl = document.createElement("div");
+
+  const helper = createHelper(wrapper, {});
+
+  wrapper.style.height = "300px";
+  wrapper.style.width = "300px";
 
   goBackEl.innerHTML = "Go back";
   goBackEl.classList.add("noc-showcase-back");
 
   showcase.appendChild(goBackEl);
 
-  const stop = cbFunc(wrapper);
-
   goBackEl.addEventListener("click", () => {
     buildMenu(items);
-    stop();
+    helper.destroy();
+
     goBackEl.remove();
     wrapper.style.height = "0px";
     wrapper.style.width = "0px";
