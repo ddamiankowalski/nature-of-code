@@ -12,8 +12,7 @@ export default function walker(wrapper) {
   });
 
   setScene((draw) => {
-    draw.clear();
-    draw.circle(model.x, model.y, 5);
+    draw.circle(model.x, model.y, 1);
   });
 
   return destroy;

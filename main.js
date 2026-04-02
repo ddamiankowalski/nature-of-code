@@ -2,15 +2,15 @@
  * Paths of the examples
  */
 const PATHS = [
-  { name: "Random Walker", module: "./algorithms/walker.js" },
-  { name: "Random Mouse Walker", module: "./algorithms/mouse-walker.js" },
+  { name: "Random Walker", module: "./examples/walker.js" },
+  { name: "Random Mouse Walker", module: "./examples/mouse-walker.js" },
   {
     name: "Random Number Distribution",
-    module: "./algorithms/rand-distribution.js",
+    module: "./examples/rand-distribution.js",
   },
-  { name: "Normal Distribution", module: "./algorithms/gauss-distribution.js" },
-  { name: "Gauss Walker", module: "./algorithms/gauss-walker.js" },
-  { name: "Lévy Flight", module: "./algorithms/levy-walker.js" },
+  { name: "Normal Distribution", module: "./examples/gauss-distribution.js" },
+  { name: "Gauss Walker", module: "./examples/gauss-walker.js" },
+  { name: "Lévy Flight", module: "./examples/levy-walker.js" },
 ];
 
 /**
