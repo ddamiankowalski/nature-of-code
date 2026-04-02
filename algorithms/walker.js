@@ -1,7 +1,10 @@
 import { createHelper } from "@javascripthub/canvas-helper";
 
 export default function walker(wrapper) {
-  const { setScene, model } = createHelper(wrapper, { x: 150, y: 150 });
+  const { setScene, model, destroy } = createHelper(wrapper, {
+    x: 150,
+    y: 150,
+  });
 
   setInterval(() => {
     model.x += Math.random() - 0.5;
@@ -11,4 +14,6 @@ export default function walker(wrapper) {
   setScene((draw) => {
     draw.circle(model.x, model.y, 5);
   });
+
+  return destroy;
 }
