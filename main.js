@@ -1,6 +1,7 @@
-import { createHelper } from "@javascripthub/canvas-helper";
-
-const items = [
+/**
+ * Paths of the examples
+ */
+const PATHS = [
   { name: "Random Walker", module: "./algorithms/walker.js" },
   { name: "Random Mouse Walker", module: "./algorithms/mouse-walker.js" },
   {
@@ -12,10 +13,13 @@ const items = [
   { name: "Lévy Flight", module: "./algorithms/levy-walker.js" },
 ];
 
-function buildMenu(items) {
+/**
+ * Builds menu
+ * */
+const menu = () => {
   const menu = document.getElementById("menu");
 
-  items.forEach((item, index) => {
+  PATHS.forEach((item, index) => {
     const el = document.createElement("div");
     const numEl = document.createElement("span");
     const wrapperEl = document.createElement("div");
@@ -38,9 +42,14 @@ function buildMenu(items) {
       showcase(example);
     });
   });
-}
+};
 
-function showcase(example) {
+/**
+ * Builds showcase
+ *
+ * @param {*} example
+ */
+const showcase = (example) => {
   const showcase = document.getElementById("showcase");
   const wrapper = document.getElementById("showcase-wrapper");
   const goBackEl = document.createElement("div");
@@ -56,7 +65,7 @@ function showcase(example) {
   showcase.appendChild(goBackEl);
 
   goBackEl.addEventListener("click", () => {
-    buildMenu(items);
+    menu();
 
     goBackEl.remove();
     destroy();
@@ -64,6 +73,6 @@ function showcase(example) {
     wrapper.style.height = "0px";
     wrapper.style.width = "0px";
   });
-}
+};
 
-buildMenu(items);
+menu();
