@@ -5,7 +5,6 @@ export default function walker(wrapper) {
   const { setScene, model, destroy } = createHelper(wrapper, walker);
 
   setScene((draw) => {
-    console.log(draw);
     draw.circle(model.x, model.y, 1);
   });
 
@@ -23,12 +22,8 @@ class Walker {
    */
   y = 150;
 
-  constructor() {
-    setInterval(() => this.step());
-  }
-
   step() {
     this.x += Math.random() - 0.5;
-    this.y = Math.random() - 0.5;
+    this.y += Math.random() - 0.5;
   }
 }
