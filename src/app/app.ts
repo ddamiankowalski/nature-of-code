@@ -1,10 +1,9 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
+import { HeaderComponent } from './routes/dashboard/components/header.component';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.html',
-  styleUrl: './app.css',
+  selector: 'noc-root',
+  imports: [HeaderComponent],
+  template: `<noc-header />`,
 })
-export class App {
-  protected readonly title = signal('nature-of-code');
-}
+export class App {}
