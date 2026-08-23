@@ -15,13 +15,9 @@ import { type ExampleItem } from '../examples/components/example.component';
   `,
 })
 export class ExamplePreview implements OnInit {
-  /** Bound from the route's resolved data; guaranteed to exist by `exampleResolver`. */
   public example = input.required<ExampleItem>();
 
   private _router = inject(Router);
-
-  // `REQUEST` is only non-null while rendering a real request on the server:
-  // it is null in the browser and during prerendering.
   private _request = inject(REQUEST);
 
   public ngOnInit(): void {
