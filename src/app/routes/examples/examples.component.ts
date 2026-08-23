@@ -16,5 +16,10 @@ import { Example, ExampleComponent } from './components/example.component';
   `,
 })
 export class ExamplesComponent {
-  public readonly examples: Example[] = [];
+  public readonly examples: Example[] = [
+    {
+      header: 'Random Walker',
+      description: 'Explore what exactly is a random walker and how it behaves on canvas',
+    },
+  ];
 }
