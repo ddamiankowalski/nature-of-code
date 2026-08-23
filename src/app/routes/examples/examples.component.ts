@@ -4,11 +4,17 @@ import { Example, ExampleComponent } from './components/example.component';
 @Component({
   selector: 'noc-examples',
   imports: [ExampleComponent],
-  host: { class: 'flex flex-col flex-1 min-h-0' },
+  host: { class: 'flex flex-col flex-1 min-h-0 p-8' },
   template: `
-    @for (example of examples; track $index) {
-      <noc-example [example]="example" />
-    } @empty {
+    @if (examples.length) {
+      <div class="flex flex-wrap content-start gap-4">
+        @for (example of examples; track $index) {
+          @defer (hydrate on interaction) {
+            <noc-example [example]="example" />
+          }
+        }
+      </div>
+    } @else {
       <div class="flex flex-1 items-center justify-center">
         There are no examples yet. Come back in the future
       </div>

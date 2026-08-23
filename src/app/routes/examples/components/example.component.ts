@@ -4,13 +4,13 @@ export type Example = { header: string; description: string };
 
 @Component({
   selector: 'noc-example',
-  host: { class: 'flex flex-col' },
+  host: { class: 'flex w-80 flex-col gap-1' },
   template: `
     @let header = example().header;
     @let description = example().description;
 
-    <h4>{{ header }}</h4>
-    <h5>{{ description }}</h5>
+    <h4 class="text-lg font-medium">{{ header }}</h4>
+    <h5 class="text-sm">{{ description }}</h5>
   `,
 })
 export class ExampleComponent {
