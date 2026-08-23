@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { ExampleComponent, type Example } from './components/example.component';
+import { Example, type ExampleItem } from './components/example.component';
 
 @Component({
   selector: 'noc-examples',
-  imports: [ExampleComponent],
+  imports: [Example],
   host: { class: 'flex flex-col flex-1 min-h-0 p-8' },
   template: `
     @if (examples.length) {
@@ -21,8 +21,8 @@ import { ExampleComponent, type Example } from './components/example.component';
     }
   `,
 })
-export class ExamplesComponent {
-  public readonly examples: Example[] = [
+export class Examples {
+  public readonly examples: ExampleItem[] = [
     {
       id: 'random-walker',
       header: 'Random Walker',

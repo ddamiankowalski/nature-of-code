@@ -1,7 +1,7 @@
 import { Component, inject, input, output } from '@angular/core';
 import { Router } from '@angular/router';
 
-export type Example = { id: string; header: string; description: string };
+export type ExampleItem = { id: string; header: string; description: string };
 
 @Component({
   selector: 'noc-example',
@@ -22,14 +22,14 @@ export type Example = { id: string; header: string; description: string };
     <h5 class="text-sm">{{ description }}</h5>
   `,
 })
-export class ExampleComponent {
-  public example = input.required<Example>();
+export class Example {
+  public example = input.required<ExampleItem>();
 
   private _router = inject(Router);
 
   protected onClick(): void {
     const { id } = this.example();
-    this._router.navigate(['/example/' + id]);
+    this._router.navigate(['/details/' + id]);
   }
 
   protected onSpace(event: Event): void {
