@@ -1,36 +1,34 @@
-import { Component, OnInit, REQUEST, computed, inject, input } from '@angular/core';
+import { Component, OnInit, REQUEST, inject, input } from '@angular/core';
 import { Router } from '@angular/router';
-import { APP_EXAMPLES } from '../../injection-tokens/examples.injection-token';
+import { type ExampleItem } from '../examples/components/example.component';
 
 @Component({
   selector: 'noc-example-preview',
   host: { class: 'flex flex-1 flex-col p-8' },
   template: `
-    <button (click)="onGoBackClick()" class="mb-8 cursor-pointer flex gap-2">Go back</button>
+    <button (click)="onGoBackClick()" class="mb-6 cursor-pointer flex gap-2">Go back</button>
 
-    @if (example(); as example) {
-      <section>
-        <h4 class="text-3xl font-medium mb-1">{{ example.header }}</h4>
-        <p class="text-base">{{ example.description }}</p>
-      </section>
-    }
+    <section>
+      <h4 class="text-lg font-medium">Preview</h4>
+      <p class="text-sm">Example id: {{ example().id }}</p>
+    </section>
   `,
 })
 export class ExamplePreview implements OnInit {
-  public id = input.required<string>();
-  public examples = inject(APP_EXAMPLES);
-
-  public example = computed(() => {
-    const id = this.id();
-    return this.examples.find((example) => example.id === id) || null;
-  });
+  /** Bound from the route's resolved data; guaranteed to exist by `exampleResolver`. */
+  public example = input.required<ExampleItem>();
 
   private _router = inject(Router);
+
+  // `REQUEST` is only non-null while rendering a real request on the server:
+  // it is null in the browser and during prerendering.
   private _request = inject(REQUEST);
 
   public ngOnInit(): void {
     if (this._request) {
-      console.log(`[SSR] rendering example-preview id="${this.id()}" for ${this._request.url}`);
+      console.log(
+        `[SSR] rendering example-preview id="${this.example().id}" for ${this._request.url}`,
+      );
     }
   }
 
