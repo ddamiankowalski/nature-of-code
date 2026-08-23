@@ -1,16 +1,17 @@
 import {
   Component,
-  DestroyRef,
   ElementRef,
+  Injector,
   afterNextRender,
+  effect,
   inject,
   input,
   viewChild,
 } from '@angular/core';
 import { Router } from '@angular/router';
+import type p5 from 'p5';
 import { type ExampleItem } from '../examples/components/example.component';
-import { randomWalkerSketch } from './sketches/random-walker.sketch';
-import p5 from 'p5';
+import { SKETCHES, type SketchName } from './p5/sketches';
 
 @Component({
   selector: 'noc-example-preview',
@@ -32,26 +33,51 @@ export class ExamplePreview {
   private _canvas = viewChild.required<ElementRef<HTMLDivElement>>('canvas');
 
   private _router = inject(Router);
-  private _destroyRef = inject(DestroyRef);
+  private _injector = inject(Injector);
 
   constructor() {
-    afterNextRender(async () => {
-      let destroyed = false;
-      this._destroyRef.onDestroy(() => (destroyed = true));
+    // `afterNextRender` never runs on the server, so everything below is
+    // browser-only and p5 stays out of the server bundle.
+    afterNextRender(() => {
+      effect(
+        (onCleanup) => {
+          const { scriptName } = this.example();
 
-      if (destroyed) {
-        return;
-      }
+          let instance: p5 | undefined;
+          let disposed = false;
 
-      // @ts-ignore
-      p5.disableSketchChecker = true;
+          // Registered synchronously: the sketch may still be loading, in which
+          // case the `disposed` flag tears it down on arrival instead.
+          onCleanup(() => {
+            disposed = true;
+            instance?.remove();
+          });
 
-      const instance = new p5(randomWalkerSketch, this._canvas().nativeElement);
-      this._destroyRef.onDestroy(() => instance.remove());
+          void this._mountSketch(scriptName).then((mounted) => {
+            if (disposed) {
+              mounted.remove();
+            } else {
+              instance = mounted;
+            }
+          });
+        },
+        { injector: this._injector },
+      );
     });
   }
 
   public onGoBackClick(): void {
     this._router.navigate(['/']);
+  }
+
+  private async _mountSketch(scriptName: SketchName): Promise<p5> {
+    const [{ default: P5 }, sketch] = await Promise.all([import('p5'), SKETCHES[scriptName]()]);
+
+    // p5's sketch verifier assumes the last <script> on the page is the user's
+    // sketch and parses it with acorn. Under hydration that is Angular's
+    // `ng-state` JSON, which is not JavaScript, so it logs "Error parsing code".
+    (P5 as unknown as { disableSketchChecker: boolean }).disableSketchChecker = true;
+
+    return new P5(sketch, this._canvas().nativeElement);
   }
 }

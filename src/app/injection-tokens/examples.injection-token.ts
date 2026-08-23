@@ -6,6 +6,7 @@ const EXAMPLES: ExampleItem[] = [
     id: 'random-walker',
     header: 'Random Walker',
     description: 'Explore what exactly is a random walker and how it behaves on canvas',
+    scriptName: 'random-walker',
   },
 ];
 

@@ -1,7 +1,13 @@
 import { Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { type SketchName } from '../../example-preview/p5/sketches';
 
-export type ExampleItem = { id: string; header: string; description: string };
+export type ExampleItem = {
+  id: string;
+  header: string;
+  description: string;
+  scriptName: SketchName;
+};
 
 @Component({
   selector: 'noc-example',
