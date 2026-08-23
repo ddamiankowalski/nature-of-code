@@ -4,6 +4,6 @@ import { HeaderComponent } from './routes/dashboard/components/header.component'
 @Component({
   selector: 'noc-root',
   imports: [HeaderComponent],
-  template: `<noc-header class="flex justify-center w-full" />`,
+  template: `<noc-header class="block w-full" />`,
 })
 export class App {}
