@@ -5,8 +5,9 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'noc-root',
   imports: [HeaderComponent, RouterOutlet],
+  host: { class: 'flex flex-col h-full' },
   template: `
-    <noc-header class="block w-full" />
+    <noc-header />
     <router-outlet />
   `,
 })
