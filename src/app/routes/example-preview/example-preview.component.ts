@@ -1,6 +1,16 @@
-import { Component, OnInit, REQUEST, inject, input } from '@angular/core';
+import {
+  Component,
+  DestroyRef,
+  ElementRef,
+  afterNextRender,
+  inject,
+  input,
+  viewChild,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { type ExampleItem } from '../examples/components/example.component';
+import { randomWalkerSketch } from './sketches/random-walker.sketch';
+import p5 from 'p5';
 
 @Component({
   selector: 'noc-example-preview',
@@ -9,23 +19,36 @@ import { type ExampleItem } from '../examples/components/example.component';
     <button (click)="onGoBackClick()" class="mb-6 cursor-pointer flex gap-2">Go back</button>
 
     <section>
-      <h4 class="text-lg font-medium">Preview</h4>
-      <p class="text-sm">Example id: {{ example().id }}</p>
+      <h4 class="text-lg font-medium">{{ example().header }}</h4>
+      <p class="text-sm">{{ example().description }}</p>
     </section>
+
+    <div #canvas class="mt-6 w-fit"></div>
   `,
 })
-export class ExamplePreview implements OnInit {
+export class ExamplePreview {
   public example = input.required<ExampleItem>();
 
-  private _router = inject(Router);
-  private _request = inject(REQUEST);
+  private _canvas = viewChild.required<ElementRef<HTMLDivElement>>('canvas');
 
-  public ngOnInit(): void {
-    if (this._request) {
-      console.log(
-        `[SSR] rendering example-preview id="${this.example().id}" for ${this._request.url}`,
-      );
-    }
+  private _router = inject(Router);
+  private _destroyRef = inject(DestroyRef);
+
+  constructor() {
+    afterNextRender(async () => {
+      let destroyed = false;
+      this._destroyRef.onDestroy(() => (destroyed = true));
+
+      if (destroyed) {
+        return;
+      }
+
+      // @ts-ignore
+      p5.disableSketchChecker = true;
+
+      const instance = new p5(randomWalkerSketch, this._canvas().nativeElement);
+      this._destroyRef.onDestroy(() => instance.remove());
+    });
   }
 
   public onGoBackClick(): void {
