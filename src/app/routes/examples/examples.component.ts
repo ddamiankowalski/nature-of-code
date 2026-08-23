@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Example, type ExampleItem } from './components/example.component';
+import { APP_EXAMPLES } from '../../injection-tokens/examples.injection-token';
 
 @Component({
   selector: 'noc-examples',
@@ -22,11 +23,5 @@ import { Example, type ExampleItem } from './components/example.component';
   `,
 })
 export class Examples {
-  public readonly examples: ExampleItem[] = [
-    {
-      id: 'random-walker',
-      header: 'Random Walker',
-      description: 'Explore what exactly is a random walker and how it behaves on canvas',
-    },
-  ];
+  public readonly examples = inject(APP_EXAMPLES);
 }
