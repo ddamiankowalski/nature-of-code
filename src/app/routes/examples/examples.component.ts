@@ -24,6 +24,7 @@ import { ExampleComponent, type Example } from './components/example.component';
 export class ExamplesComponent {
   public readonly examples: Example[] = [
     {
+      id: 'random-walker',
       header: 'Random Walker',
       description: 'Explore what exactly is a random walker and how it behaves on canvas',
     },
