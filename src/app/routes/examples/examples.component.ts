@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Example, ExampleComponent } from './components/example.component';
+import { ExampleComponent, type Example } from './components/example.component';
 
 @Component({
   selector: 'noc-examples',

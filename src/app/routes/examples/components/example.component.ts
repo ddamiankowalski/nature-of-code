@@ -4,7 +4,7 @@ export type Example = { header: string; description: string };
 
 @Component({
   selector: 'noc-example',
-  host: { class: 'flex w-80 flex-col gap-1' },
+  host: { class: 'flex w-80 flex-col gap-1 cursor-pointer' },
   template: `
     @let header = example().header;
     @let description = example().description;
