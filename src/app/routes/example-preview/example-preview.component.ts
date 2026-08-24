@@ -3,19 +3,29 @@ import { Router } from '@angular/router';
 import type p5 from 'p5';
 import { type ExampleItem } from '../examples/components/example.component';
 import { SKETCHES, type SketchName } from './p5/sketches';
-
+import { NgIcon, provideIcons } from '@ng-icons/core';
+import { phosphorArrowBendUpLeftBold } from '@ng-icons/phosphor-icons/bold';
 @Component({
   selector: 'noc-example-preview',
   host: { class: 'flex flex-1 flex-col p-8' },
+  imports: [NgIcon],
+  providers: [provideIcons({ phosphorArrowBendUpLeftBold })],
   template: `
-    <button (click)="onGoBackClick()" class="mb-6 cursor-pointer flex gap-2">Go back</button>
+    <section class="flex gap-4 items-center">
+      <button
+        (click)="onGoBackClick()"
+        class="flex justify-center items-center cursor-pointer w-12 h-12 rounded-full border-[1.5px]"
+      >
+        <ng-icon name="phosphorArrowBendUpLeftBold" />
+      </button>
 
-    <section>
-      <h4 class="text-2xl font-medium">{{ example().header }}</h4>
-      <p class="text-md">{{ example().description }}</p>
+      <div>
+        <h4 class="text-3xl font-medium">{{ example().header }}</h4>
+        <p class="text-lg">{{ example().description }}</p>
+      </div>
     </section>
 
-    <div #canvas class="mt-6 w-fit"></div>
+    <div #canvas class="mt-8 w-fit"></div>
   `,
 })
 export class ExamplePreview {
