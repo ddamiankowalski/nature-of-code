@@ -14,7 +14,7 @@ import { phosphorArrowBendUpLeftBold } from '@ng-icons/phosphor-icons/bold';
     <section class="flex gap-6 items-center">
       <button
         (click)="onGoBackClick()"
-        class="flex justify-center items-center cursor-pointer w-14 h-14 rounded-lg border-[1.5px] transition-colors hover:bg-current hover:[--ng-icon__color:white]"
+        class="flex justify-center items-center cursor-pointer w-14 h-14 rounded-lg border-[1.5px] transition-colors select-none hover:bg-current hover:[--ng-icon__color:white]"
       >
         <ng-icon name="phosphorArrowBendUpLeftBold" class="transition-colors" />
       </button>
