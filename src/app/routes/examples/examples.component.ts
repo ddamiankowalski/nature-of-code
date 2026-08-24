@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Example, type ExampleItem } from './components/example.component';
+import { Example } from './components/example.component';
 import { APP_EXAMPLES } from '../../injection-tokens/examples.injection-token';
 
 @Component({
