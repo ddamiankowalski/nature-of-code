@@ -5,6 +5,7 @@ import type p5 from 'p5';
  */
 export const SKETCHES = {
   'random-walker': () => import('./random-walker').then((m) => m.default),
+  'random-number-distribution': () => import('./random-number-distribution').then((m) => m.default),
 } satisfies Record<string, () => Promise<(p: p5) => void>>;
 
 export type SketchName = keyof typeof SKETCHES;
