@@ -21,33 +21,32 @@ const randomNumberDistribution = (p: p5) => {
 
 class RandomDistribution {
   public readonly total = 20;
-  public readonly randomCounts: number[] = [];
+  public readonly columns: number[] = [];
 
   constructor(public readonly p5: p5) {}
 
   public setup(): void {
     for (let i = 0; i < this.total; i++) {
-      this.randomCounts[i] = 0;
+      this.columns[i] = 0;
     }
   }
 
   public distribute(): void {
     this.p5.background(255);
 
-    let index = this.p5.floor(this.p5.random(this.randomCounts.length));
-    this.randomCounts[index]++;
+    let index = this.p5.floor(this.p5.random(this.columns.length));
+    this.columns[index]++;
 
     this.p5.stroke(0);
 
-    let width = this.p5.width / this.randomCounts.length;
+    const max = Math.max(...this.columns);
+    let width = this.p5.width / this.columns.length;
 
-    for (let x = 0; x < this.randomCounts.length; x++) {
-      this.p5.rect(
-        x + width,
-        this.p5.height - this.randomCounts[x],
-        width - 1,
-        this.randomCounts[x],
-      );
+    for (let x = 0; x < this.columns.length; x++) {
+      const column = this.columns[x];
+      const height = this.p5.height * (column / max) * 0.7;
+
+      this.p5.rect(x * width, this.p5.height, width - 1, -height);
     }
   }
 }
