@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
       THE NATURE <br />
       OF CODE
     </h1>
-    <h3 class="text-xl mt-6 text-left">
+    <h3 class="text-base mt-6 text-left">
       IMPLEMENTATION FROM THE BOOK <br />
       BY
       <a
