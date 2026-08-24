@@ -11,7 +11,7 @@ const randomWalker = (p: p5): void => {
 
   p.setup = () => {
     p.createCanvas(600, 400);
-    p.background(255);
+    p.background(0);
 
     walker = new Walker(p);
   };
@@ -32,7 +32,7 @@ class Walker {
   }
 
   public show(): void {
-    this.p.stroke(0);
+    this.p.stroke(255);
     this.p.point(this.x, this.y);
   }
 
