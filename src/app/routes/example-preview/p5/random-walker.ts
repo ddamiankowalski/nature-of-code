@@ -6,7 +6,7 @@ import type p5 from 'p5';
  * `import type` keeps this a compile-time dependency only, so the p5 runtime is
  * never pulled into the server bundle.
  */
-export const randomWalkerSketch = (p: p5): void => {
+const randomWalker = (p: p5): void => {
   let x = 0;
   let y = 0;
 
@@ -42,3 +42,5 @@ export const randomWalkerSketch = (p: p5): void => {
     y = p.constrain(y, 0, p.height);
   };
 };
+
+export default randomWalker;
