@@ -7,22 +7,24 @@ import type p5 from 'p5';
  * never pulled into the server bundle.
  */
 const randomWalker = (p: p5): void => {
-  const walker = new Walker(p);
+  let walker: Walker;
 
   p.setup = () => {
     p.createCanvas(600, 400);
     p.background(255);
 
-    p.draw = () => {
-      walker.step();
-      walker.show();
-    };
+    walker = new Walker(p);
+  };
+
+  p.draw = () => {
+    walker.step();
+    walker.show();
   };
 };
 
 class Walker {
-  public x = 0;
-  public y = 0;
+  public x: number;
+  public y: number;
 
   constructor(public readonly p: p5) {
     this.x = p.width / 2;
@@ -30,16 +32,12 @@ class Walker {
   }
 
   public show(): void {
-    const { stroke, point } = this.p;
-
-    stroke(0);
-    point(this.x, this.y);
+    this.p.stroke(0);
+    this.p.point(this.x, this.y);
   }
 
   public step(): void {
-    const { floor, random } = this.p;
-
-    const choice = floor(random(4));
+    const choice = this.p.floor(this.p.random(4));
 
     if (choice === 0) {
       this.x++;
