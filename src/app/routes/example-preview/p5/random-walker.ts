@@ -7,40 +7,50 @@ import type p5 from 'p5';
  * never pulled into the server bundle.
  */
 const randomWalker = (p: p5): void => {
-  let x = 0;
-  let y = 0;
+  const walker = new Walker(p);
 
   p.setup = () => {
     p.createCanvas(600, 400);
-    p.background(24);
+    p.background(255);
 
-    x = p.width / 2;
-    y = p.height / 2;
-  };
-
-  p.draw = () => {
-    p.stroke(235);
-    p.strokeWeight(2);
-    p.point(x, y);
-
-    switch (p.floor(p.random(4))) {
-      case 0:
-        x += 1;
-        break;
-      case 1:
-        x -= 1;
-        break;
-      case 2:
-        y += 1;
-        break;
-      default:
-        y -= 1;
-        break;
-    }
-
-    x = p.constrain(x, 0, p.width);
-    y = p.constrain(y, 0, p.height);
+    p.draw = () => {
+      walker.step();
+      walker.show();
+    };
   };
 };
+
+class Walker {
+  public x = 0;
+  public y = 0;
+
+  constructor(public readonly p: p5) {
+    this.x = p.width / 2;
+    this.y = p.height / 2;
+  }
+
+  public show(): void {
+    const { stroke, point } = this.p;
+
+    stroke(0);
+    point(this.x, this.y);
+  }
+
+  public step(): void {
+    const { floor, random } = this.p;
+
+    const choice = floor(random(4));
+
+    if (choice === 0) {
+      this.x++;
+    } else if (choice === 1) {
+      this.x--;
+    } else if (choice === 2) {
+      this.y++;
+    } else {
+      this.y--;
+    }
+  }
+}
 
 export default randomWalker;
