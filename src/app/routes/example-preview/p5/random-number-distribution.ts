@@ -44,8 +44,11 @@ class RandomDistribution {
 
     for (let x = 0; x < this.columns.length; x++) {
       const column = this.columns[x];
-      const height = this.p5.height * (column / max) * 0.7;
 
+      const height = this.p5.height * (column / max) * 0.7;
+      const color = 255 - (column / max) * 255;
+
+      this.p5.fill(255, color, color);
       this.p5.rect(x * width, this.p5.height, width - 1, -height);
     }
   }
