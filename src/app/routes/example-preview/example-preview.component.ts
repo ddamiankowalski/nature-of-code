@@ -11,7 +11,7 @@ import { phosphorArrowBendUpLeftBold } from '@ng-icons/phosphor-icons/bold';
   imports: [NgIcon],
   providers: [provideIcons({ phosphorArrowBendUpLeftBold })],
   template: `
-    <div class="flex flex-1 min-h-0 flex-col gap-24 lg:flex-row">
+    <div class="flex flex-1 min-h-0 flex-col gap-8 lg:gap-24 lg:flex-row">
       <section class="flex min-w-0 flex-1 flex-col max-w-150 lg:basis-1/2">
         <div class="flex gap-6 items-center">
           <button
@@ -30,7 +30,7 @@ import { phosphorArrowBendUpLeftBold } from '@ng-icons/phosphor-icons/bold';
         <div #canvas class="mt-8 max-w-full overflow-x-auto"></div>
       </section>
 
-      <article class="flex min-w-0 flex-1 flex-col gap-4 overflow-y-auto lg:basis-1/2 mr-10">
+      <article class="flex min-w-0 flex-1 flex-col gap-4 overflow-y-auto lg:basis-1/2 lg:mr-10">
         <h4 class="text-3xl font-medium">Lorem ipsum dolor sit amet</h4>
 
         <p class="text-lg">
