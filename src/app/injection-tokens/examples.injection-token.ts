@@ -7,12 +7,16 @@ const EXAMPLES: ExampleItem[] = [
     header: 'Random Walker',
     description: 'Explore what exactly is a random walker and how it behaves on canvas',
     scriptName: 'random-walker',
+    articleDescription: 'No description',
+    articleHeader: 'Random Walker',
   },
   {
     id: 'random-number-distribution',
     header: 'Random Number Distribution',
     description: 'Explore what exactly is a random walker and how it behaves on canvas',
     scriptName: 'random-number-distribution',
+    articleDescription: 'No description',
+    articleHeader: 'Random Number Distribution',
   },
 ];
 

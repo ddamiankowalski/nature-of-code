@@ -31,24 +31,10 @@ import { phosphorArrowBendUpLeftBold } from '@ng-icons/phosphor-icons/bold';
       </section>
 
       <article class="flex min-w-0 flex-1 flex-col gap-4 overflow-y-auto lg:basis-1/2 lg:mr-10">
-        <h4 class="text-3xl font-medium">Lorem ipsum dolor sit amet</h4>
+        <h4 class="text-3xl font-medium">{{ example().articleHeader }}</h4>
 
         <p class="text-lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nunc ut laoreet
-          dictum, massa sapien tempor nisl, eget aliquam nibh arcu non lorem. Vivamus dignissim
-          turpis id sapien porttitor, at facilisis lacus vulputate.
-        </p>
-
-        <p class="text-lg">
-          Curabitur pretium tincidunt lacus. Nulla gravida orci a odio. Nullam varius, turpis et
-          commodo pharetra, est eros bibendum elit, nec luctus magna felis sollicitudin mauris.
-          Integer in mauris eu nibh euismod gravida.
-        </p>
-
-        <p class="text-lg">
-          Duis ac tellus et risus vulputate vehicula. Donec lobortis risus a elit. Etiam tempor. Ut
-          ullamcorper, ligula eu tempor congue, eros est euismod turpis, id tincidunt sapien risus a
-          quam. Maecenas fermentum consequat mi.
+          {{ example().articleDescription }}
         </p>
       </article>
     </div>

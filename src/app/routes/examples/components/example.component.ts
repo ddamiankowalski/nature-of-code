@@ -7,6 +7,8 @@ export type ExampleItem = {
   header: string;
   description: string;
   scriptName: SketchName;
+  articleHeader: string;
+  articleDescription: string;
 };
 
 @Component({
@@ -20,7 +22,9 @@ export type ExampleItem = {
       [routerLink]="['/example-preview', example.id]"
       class="group flex w-80 cursor-pointer flex-col gap-1 rounded-lg border-[1.5px] p-4 transition-colors select-none hover:bg-current"
     >
-      <h4 class="text-xl font-medium transition-colors group-hover:text-white">{{ example.header }}</h4>
+      <h4 class="text-xl font-medium transition-colors group-hover:text-white">
+        {{ example.header }}
+      </h4>
       <h5 class="text-base transition-colors group-hover:text-white">{{ example.description }}</h5>
     </a>
   `,
