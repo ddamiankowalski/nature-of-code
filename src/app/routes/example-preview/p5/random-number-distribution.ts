@@ -1,4 +1,5 @@
 import type p5 from 'p5';
+import { resize } from './resize-util';
 
 /**
  * Displays random number distribution
@@ -8,6 +9,8 @@ const randomNumberDistribution = (p: p5) => {
 
   p.setup = () => {
     p.createCanvas(600, 400);
+    resize(p);
+
     p.background(255);
 
     distribution = new RandomDistribution(p);

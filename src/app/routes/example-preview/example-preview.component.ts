@@ -27,7 +27,7 @@ import { phosphorArrowBendUpLeftBold } from '@ng-icons/phosphor-icons/bold';
           </div>
         </div>
 
-        <div #canvas class="mt-8 max-w-full overflow-x-auto"></div>
+        <div id="canvas-container" #canvas class="mt-8 max-w-full overflow-x-auto"></div>
       </section>
 
       <article class="flex min-w-0 flex-1 flex-col gap-4 overflow-y-auto lg:basis-1/2 lg:mr-10">

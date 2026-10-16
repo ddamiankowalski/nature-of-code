@@ -1,4 +1,5 @@
 import type p5 from 'p5';
+import { resize } from './resize-util';
 
 /**
  * A walker that takes one random axis-aligned step per frame.
@@ -11,6 +12,9 @@ const randomWalker = (p: p5): void => {
 
   p.setup = () => {
     p.createCanvas(600, 400);
+
+    resize(p, () => p.background(0));
+
     p.background(0);
 
     walker = new Walker(p);
